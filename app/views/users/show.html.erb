@@ -8,6 +8,15 @@
     <p>has made <%= pluralize(@user.ratings.count, 'rating') %>, average <%= @user.average_rating %></p>
 <% end %>
 
+<% if @user.beer_clubs.any? %>
+    <p>
+      member of
+      <% @user.beer_clubs.each do |club| %>
+          <%= link_to club.name, club %>
+      <% end %>
+    </p>
+<% end %>
+
 <h3>Ratings</h3>
 
 <% if @user.ratings.empty? %>
