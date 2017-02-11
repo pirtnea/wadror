@@ -39,6 +39,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'pry-rails'
   gem 'better_errors'
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :development do
