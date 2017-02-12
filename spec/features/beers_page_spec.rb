@@ -1,6 +1,13 @@
 require 'rails_helper'
 
+include Helpers
+
 describe "Beer" do
+  before :each do
+    FactoryGirl.create :user
+    sign_in(username: "Pekka", password: "Foobar1")
+  end
+
   it "when given a valid name, should be added to the system" do
     visit new_beer_path
 

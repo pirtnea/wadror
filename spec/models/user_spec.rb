@@ -86,15 +86,6 @@ RSpec.describe User, type: :model do
 
       expect(user.favorite_style).to eq(beer.style)
     end
-
-    # it "is the one with highest average rating if several rated" do
-    #   create_beers_with_ratings(user, 10, 12)
-    #   best = FactoryGirl.create(:beer, style: "IPA")
-    #
-    #   user.ratings << FactoryGirl.create(:rating3)
-    #
-    #   expect(user.favorite_style).to eq(best.style)
-    # end
   end
 
   describe "favorite brewery" do
@@ -113,9 +104,6 @@ RSpec.describe User, type: :model do
 
       expect(user.favorite_brewery).to eq(beer.brewery)
     end
-
-    # it "is the one with highest average rating if several rated" do
-    # end
   end
 end
 
