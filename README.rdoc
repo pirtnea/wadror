@@ -1,3 +1,0 @@
-== README
-
-Heroku: https://damp-waters-84559.herokuapp.com/
