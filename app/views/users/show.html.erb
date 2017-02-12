@@ -21,6 +21,10 @@
 
 <% if @user.ratings.empty? %>
     <p>No ratings!</p>
+<% else %>
+    <p>Favorite beer: <%= @user.favorite_beer %></p>
+    <p>Favorite brewery: <%= @user.favorite_brewery.name %></p>
+    <p>Favorite style: <%= @user.favorite_style %></p>
 <% end %>
 
 <ul>
