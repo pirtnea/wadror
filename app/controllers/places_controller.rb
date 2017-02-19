@@ -4,6 +4,10 @@ class PlacesController < ApplicationController
   def index
   end
 
+  def show
+    @bar = BeermappingApi.get_bar_by_id_and_city(session[:last_search], params[:id])
+  end
+
   def search
     @places = BeermappingApi.places_in(params[:city])
 
