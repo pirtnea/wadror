@@ -20,5 +20,5 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_brewery_path(@brewery) if current_user %> |
-<%= link_to 'Back', breweries_path %>
+<%= link_to 'Edit', edit_brewery_path(@brewery), class: "btn btn-primary" if current_user %>
+<%= link_to 'Back', breweries_path, class: "btn btn-primary" %>
