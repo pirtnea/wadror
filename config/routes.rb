@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     post 'toggle_activity', on: :member
   end
 
+  resources :users do
+    post 'toggle_blocked', to: 'users#toggle_blocked'
+  end
+
   get 'signup', to: 'users#new'
   get 'signin', to: 'sessions#new'
   delete 'signout', to: 'sessions#destroy'

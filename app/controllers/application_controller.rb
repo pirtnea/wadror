@@ -17,4 +17,9 @@ class ApplicationController < ActionController::Base
   def ensure_that_admin
     redirect_to :back, notice: 'you don\'t have the admin rights' if not current_user.admin?
   end
+
+  def is_admin?
+    return nil unless current_user
+    current_user.admin?
+  end
 end
