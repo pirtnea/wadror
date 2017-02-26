@@ -1,13 +1,50 @@
-<p id="notice"><%= notice %></p>
+<h1>Rating Statistics</h1>
+<p> Number of ratings: <%= @ratings.count %></p>
 
-<h2>List of ratings</h2>
+<h2>Best Beers</h2>
+<%= render 'list', best: Beer.top(3) %>
 
-<p>Number of ratings: <%= @ratings.count %></p>
+<h2>Best Breweries</h2>
+<%= render 'list', best: Brewery.top(3) %>
+
+<h2> Most active users </h2>
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Favourite Beer</th>
+    <th>Favourite Brewery</th>
+    <th>Favourite Style</th>
+    <th>Ratings</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% User.most_ratings(3).each do |user| %>
+      <tr>
+        <td><%= link_to user.username, user %></td>
+        <% if not user.favorite_beer.nil? %>
+            <td><%= link_to user.favorite_beer.name, user.favorite_beer %></td>
+        <% else %>
+            <td>none</td>
+        <% end %>
+        <% if not user.favorite_brewery.nil? %>
+            <td><%= link_to user.favorite_brewery.name, user.favorite_brewery %></td>
+        <% else %>
+            <td>none</td>
+        <% end %>
+        <td><%= user.ratings.count %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h2>Recent ratings</h2>
 
 <ul>
-  <% @ratings.each do |rating| %>
-    <li> <%= rating %> <%= link_to rating.user.username, rating.user %> </li>
+  <% @ratings.last(5).reverse.each do |rating| %>
+      <li><%= rating %> <%= link_to rating.user.username, rating.user %></li>
   <% end %>
 </ul>
 
-<%= link_to 'New rating', new_rating_path, class: "btn btn-primary" %>

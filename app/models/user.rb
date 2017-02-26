@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
 
   has_many :ratings
 
+  def self.most_ratings limit
+    User.all.sort_by{ |u| -(u.ratings.count||0) }.take(limit)
+  end
+
   def favorite_beer
     return nil if ratings.empty?
     ratings.order(score: :desc).limit(1).first.beer
