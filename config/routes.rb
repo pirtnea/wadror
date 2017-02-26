@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   resources :places, only: [:index, :show]
   post 'places', to: 'places#search'
 
+  resources :breweries do
+    post 'toggle_activity', on: :member
+  end
+
   get 'signup', to: 'users#new'
   get 'signin', to: 'sessions#new'
   delete 'signout', to: 'sessions#destroy'

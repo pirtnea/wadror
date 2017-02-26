@@ -10,7 +10,7 @@
   <% best.each do |best| %>
       <tr>
         <td><%= link_to best.name, best %></td>
-        <td><%= best.average_rating %></td>
+        <td><%= round(best.average_rating) %></td>
       </tr>
   <% end %>
   </tbody>
